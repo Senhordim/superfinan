@@ -1,0 +1,15 @@
+{
+    "name": "SFinan",
+    "autoload": {
+        "psr-4": {
+            "SFinan\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Diego Collares",
+            "email": "diego.collares@gmail.com"
+        }
+    ],
+    "require": {}
+}
