@@ -1,5 +1,5 @@
 {
-    "name": "SFinan",
+    "name": "senhordim/superfinan",
     "autoload": {
         "psr-4": {
             "SFinan\\": "src/"
@@ -11,5 +11,8 @@
             "email": "diego.collares@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "pecee/simple-router": "5.3.0.5",
+        "vlucas/phpdotenv": "^5.5"
+    }
 }
