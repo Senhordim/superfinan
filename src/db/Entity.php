@@ -23,11 +23,7 @@ abstract class Entity
 
     public function find(string $fields = '*', int $id)
     {
-        $sql = 'SELECT ' . $fields . ' FROM ' . $this->table .  ' WHERE id = :id';
-        $get = $this->conn->prepare($sql);
-        $get->bindValue(':id', $id, PDO::PARAM_INT);
-        $get->execute();
-        return $get->fetch(PDO::FETCH_ASSOC);
+        return current($this->where(['id' => $id], '', $fields));
     }
 
     public function where(
@@ -52,14 +48,35 @@ abstract class Entity
 
         $sql .= $where;
 
-        $get = $this->conn->prepare($sql);
-
-        foreach ($conditions as $k => $v) {
-           gettype($v) == 'int' 
-            ? $get->bindParam(':' . $k, $v, PDO::PARAM_INT) 
-            : $get->bindParam(':' . $k, $v, PDO::PARAM_STR);
-        }
+        $get = $this->bind($sql, $conditions);
+        
+        $get->execute();
 
         return $get->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function insert($data)
+    {
+        $binds = array_keys($data);
+        $sql = 'INSERT INTO ' .  $this->table . '(' . implode(', :', $binds) . ', create_at, update_at)
+                VALUES(:'. implode(', :', $binds) . ', NOW(), NOW())';
+
+        $insert = $this->bind($sql, $data);
+
+        return $insert->execute();
+    }
+
+    private function bind($sql, $data)
+    {
+
+        $bind = $this->conn->prepare($sql);
+
+        foreach ($data as $k => $v) {
+            gettype($v) == 'int' 
+             ? $bind->bindValue(':' . $k, $v, PDO::PARAM_INT) 
+             : $bind->bindValue(':' . $k, $v, PDO::PARAM_STR);
+         }
+
+         return $bind;
     }
 }
