@@ -14,7 +14,7 @@ abstract class Entity
         $this->conn = $conn;
     }
 
-    public function findAll(string $fields = '*') 
+    public function findAll(string $fields = '*') : array
     {
         $sql = 'SELECT ' . $fields . ' FROM ' . $this->table;
         $get = $this->conn->query($sql);
@@ -24,13 +24,13 @@ abstract class Entity
     public function find(string $fields = '*', int $id)
     {
         return current($this->where(['id' => $id], '', $fields));
-    }
+    } 
 
     public function where(
         array $conditions, 
         string $operator = ' AND ', 
         string $fields = '*'
-    )
+    ) : array
     { 
         $sql = 'SELECT ' . $fields . ' FROM ' . $this->table . ' WHERE ';
         
@@ -55,7 +55,7 @@ abstract class Entity
         return $get->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function insert($data)
+    public function insert(array $data) : bool
     {
         $binds = array_keys($data);
         $sql = 'INSERT INTO ' .  $this->table . '(' . implode(', :', $binds) . ', create_at, update_at)
@@ -64,6 +64,41 @@ abstract class Entity
         $insert = $this->bind($sql, $data);
 
         return $insert->execute();
+    }
+
+    public function update($data) : bool
+    {
+        if(!array_key_exists('id', $data)){
+            throw new \Exception('É necessário informar um ID válido para atualizar');
+        }
+
+        $sql = 'UPDATE ' . $this->table . ' SET ';
+
+        $set = null;
+
+        $binds = array_keys($data);
+
+        foreach ($binds as $v) {
+            if($v !== 'id'){
+                $set .= is_null($set) ? $v . ' = :' . $v : ', ' . $v . ' = :' . $v;
+            }
+            
+        };
+
+        $sql .= $set . 'update_at = NOW() WHERE id = :id';
+
+        $update = $this->bind($sql, $data);
+
+        return $update->execute();
+    }
+
+    public function delete(int $id) : bool
+    {
+        $sql = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
+
+        $delete = $this->bind($sql, ['id' => $id]);
+
+        return $delete->execute();
     }
 
     private function bind($sql, $data)
