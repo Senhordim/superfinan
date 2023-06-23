@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace SFinan\DB;
 
@@ -21,19 +21,19 @@ abstract class Entity
         return $get->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function find(string $fields = '*', int $id)
-    {
-        return current($this->where(['id' => $id], '', $fields));
-    } 
+    // public function find(string $fields = '*', int $id)
+    // {
+    //     return current($this->where(['id' => $id], '', $fields));
+    // }
 
     public function where(
-        array $conditions, 
-        string $operator = ' AND ', 
+        array $conditions,
+        string $operator = ' AND ',
         string $fields = '*'
     ) : array
-    { 
+    {
         $sql = 'SELECT ' . $fields . ' FROM ' . $this->table . ' WHERE ';
-        
+
         $binds = array_keys($conditions);
 
         $where = null;
@@ -49,7 +49,7 @@ abstract class Entity
         $sql .= $where;
 
         $get = $this->bind($sql, $conditions);
-        
+
         $get->execute();
 
         return $get->fetchAll(PDO::FETCH_ASSOC);
@@ -58,8 +58,9 @@ abstract class Entity
     public function insert(array $data) : bool
     {
         $binds = array_keys($data);
-        $sql = 'INSERT INTO ' .  $this->table . '(' . implode(', :', $binds) . ', create_at, update_at)
-                VALUES(:'. implode(', :', $binds) . ', NOW(), NOW())';
+
+        $sql = 'INSERT INTO ' .  $this->table . '(' . implode(', ', $binds) . ')
+                VALUES(:' . implode(', :', $binds) .')';
 
         $insert = $this->bind($sql, $data);
 
@@ -82,7 +83,7 @@ abstract class Entity
             if($v !== 'id'){
                 $set .= is_null($set) ? $v . ' = :' . $v : ', ' . $v . ' = :' . $v;
             }
-            
+
         };
 
         $sql .= $set . 'update_at = NOW() WHERE id = :id';
@@ -107,8 +108,8 @@ abstract class Entity
         $bind = $this->conn->prepare($sql);
 
         foreach ($data as $k => $v) {
-            gettype($v) == 'int' 
-             ? $bind->bindValue(':' . $k, $v, PDO::PARAM_INT) 
+            gettype($v) == 'int'
+             ? $bind->bindValue(':' . $k, $v, PDO::PARAM_INT)
              : $bind->bindValue(':' . $k, $v, PDO::PARAM_STR);
          }
 

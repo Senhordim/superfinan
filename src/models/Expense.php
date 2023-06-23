@@ -1,6 +1,5 @@
 <?php
 
-
 namespace SFinan\Models;
 
 use SFinan\DB\Entity;
