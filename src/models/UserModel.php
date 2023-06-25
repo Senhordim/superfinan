@@ -4,7 +4,7 @@ namespace SFinan\Models;
 
 use SFinan\DB\Entity;
 
-class User extends Entity
+class UserModel extends Entity
 {
     protected $table = 'users';
 }

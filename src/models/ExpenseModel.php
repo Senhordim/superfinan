@@ -4,7 +4,7 @@ namespace SFinan\Models;
 
 use SFinan\DB\Entity;
 
-class Expense extends Entity
+class ExpenseModel extends Entity
 {
     protected $table = 'expenses';
 }

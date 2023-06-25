@@ -59,10 +59,14 @@ abstract class Entity
     {
         $binds = array_keys($data);
 
-        $sql = 'INSERT INTO ' .  $this->table . '(' . implode(', ', $binds) . ')
-                VALUES(:' . implode(', :', $binds) .')';
+        $sql = 'INSERT INTO ' .  $this->table . '(' . implode(', ', $binds) . ', created_at, updated_at)
+                VALUES(:' . implode(', :', $binds) .', ' . time() . ', ' .  time() . ')';
+
+
 
         $insert = $this->bind($sql, $data);
+
+
 
         return $insert->execute();
     }

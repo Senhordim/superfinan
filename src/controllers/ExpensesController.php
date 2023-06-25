@@ -4,17 +4,11 @@ namespace SFinan\Controllers;
 
 
 use SFinan\Views\View;
-use SFinan\Models\Expense;
+use SFinan\Models\ExpenseModel;
 use SFinan\DB\Connection;
 
 class ExpensesController
 {
-    public function index()
-    {
-
-        $view = new View('/home/index.php');
-        return $view->render();
-    }
 
     public function new()
     {
@@ -25,13 +19,8 @@ class ExpensesController
     public function create()
     {
         $data = $_POST;
-
-        $data['category_id'] = 1;
-
-        $expense = new Expense(Connection::getInstance());
-
+        $expense = new ExpenseModel(Connection::getInstance());
         $expense->insert($data);
-
         return header('Location: ' . $_ENV['BASE_URL']);
     }
 

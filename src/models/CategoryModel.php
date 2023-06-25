@@ -5,7 +5,7 @@ namespace SFinan\Models;
 
 use SFinan\DB\Entity;
 
-class Category extends Entity
+class CategoryModel extends Entity
 {
     protected $table = 'categories';
 }
