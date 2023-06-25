@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'senhordim/superfinan',
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
-        'reference' => '83a6920a43d03a443fee63f86586b2fa2531b144',
+        'pretty_version' => 'dev-develop',
+        'version' => 'dev-develop',
+        'reference' => '824c0d5449e89fd08d95dcae179229d57893014a',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -38,9 +38,9 @@
             'dev_requirement' => false,
         ),
         'senhordim/superfinan' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => '83a6920a43d03a443fee63f86586b2fa2531b144',
+            'pretty_version' => 'dev-develop',
+            'version' => 'dev-develop',
+            'reference' => '824c0d5449e89fd08d95dcae179229d57893014a',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

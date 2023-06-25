@@ -14,9 +14,9 @@ abstract class Entity
         $this->conn = $conn;
     }
 
-    public function findAll(string $fields = '*') : array
+    public function findAll(string $fields = '*', string $order = 'ASC') : array
     {
-        $sql = 'SELECT ' . $fields . ' FROM ' . $this->table;
+        $sql = 'SELECT ' . $fields . ' FROM ' . $this->table . ' ORDER BY created_at ' . $order;
         $get = $this->conn->query($sql);
         return $get->fetchAll(PDO::FETCH_ASSOC);
     }

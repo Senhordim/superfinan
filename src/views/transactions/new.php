@@ -257,7 +257,7 @@
               Nova despesa
             </h2>
 
-            <?php require VIEWS_PATH . '/expenses/_form.php'; ?>
+            <?php require VIEWS_PATH . '/transactions/_form.php'; ?>
 
             <!-- New Table -->
             <div class="w-full overflow-hidden rounded-lg shadow-xs">

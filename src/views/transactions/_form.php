@@ -3,7 +3,7 @@
   >
   <form
     method="post"
-    action="http://localhost:3000/expenses/create"
+    action="http://localhost:3000/transactions/create"
     >
     <label class="block text-sm">
       <span class="text-gray-700 dark:text-gray-400">Valor Gasto</span>
@@ -23,7 +23,9 @@
         placeholder="Descrição da despesa"
         ></textarea>
     </label>
-    <input type="hidden" id="categoryId" name="category_id" value="1" />
+    <input type="hidden"  name="user_id" value="1" />
+    <input type="hidden"  name="category_id" value="1" />
+    <input type="hidden"  name="type" value="1" />
     <button
       class="mt-6 flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
       >

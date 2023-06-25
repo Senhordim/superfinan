@@ -3,28 +3,34 @@
 namespace SFinan\Controllers;
 
 use SFinan\DB\Connection;
-use SFinan\Models\ExpenseModel;
-use SFinan\Utils\FCurrency;
+use SFinan\Models\TransactionModel;
 use SFinan\Views\View;
 
 class HomeController
 {
     public function index()
     {
-
-        $expense = new ExpenseModel(Connection::getInstance());
         $view = new View('/home/index.php');
-        $allExpenses = $expense->findAll();
-        $view->expenses =  $allExpenses;
-        $view->amountExpenses = HomeController::sumExpenses($allExpenses);
+
+        $transaction = new TransactionModel(Connection::getInstance());
+
+        $allTransactions = $transaction->findAll(order: 'DESC');
+        $view->allTransactions =  $allTransactions ;
+
+        $allTransactionsDebit = $transaction->where(['type' => 0]);
+        $view->amountDebitTransactions = HomeController::sumExpenses($allTransactionsDebit);
+
+        $allTransactionsCredit = $transaction->where(['type' => 1]);
+        $view->amountCreditTransactions = HomeController::sumExpenses($allTransactionsCredit);
+
         return $view->render();
     }
 
-    private static function sumExpenses($expenses) : float
+    private static function sumExpenses($transactions) : float
     {
         $sum = 0;
-        foreach ($expenses as $expense) {
-            $sum += $expense['amount'];
+        foreach ($transactions as $transaction) {
+            $sum += $transaction['amount'];
         }
         return $sum;
     }
