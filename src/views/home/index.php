@@ -43,7 +43,7 @@
                 <input
                   class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input"
                   type="text"
-                  placeholder="Search for projects"
+                  placeholder="Buscar em receitas e despesas"
                   aria-label="Search"
                 />
               </div>
@@ -166,7 +166,7 @@
                 >
                   <img
                     class="object-cover w-8 h-8 rounded-full"
-                    src="https://images.unsplash.com/photo-1502378735452-bc7d86632805?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=aa3a807e1bbdfd4364d1f449eaa96d82"
+                    src="https://avatars.githubusercontent.com/u/212854?s=400&u=5a6a599476df16f3e6a28a936411ea2c9e3fe11a&v=4"
                     alt=""
                     aria-hidden="true"
                   />
@@ -265,6 +265,36 @@
 
             <!-- Cards -->
             <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+
+            <div
+                class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
+              >
+                <div
+                  class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500"
+                >
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+                <div>
+                  <p
+                    class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
+                  >
+                    Total de Receitas
+                  </p>
+                  <p
+                    class="text-lg font-semibold text-gray-700 dark:text-gray-200"
+                  >
+
+
+                    <?= FCurrency::toBRL($this->amountCreditTransactions) ?>
+                  </p>
+                </div>
+              </div>
               <!-- Card -->
               <div
                 class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
@@ -294,35 +324,7 @@
                 </div>
               </div>
               <!-- Card -->
-              <div
-                class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
-              >
-                <div
-                  class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500"
-                >
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fill-rule="evenodd"
-                      d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <div>
-                  <p
-                    class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
-                  >
-                    Total de Receitas
-                  </p>
-                  <p
-                    class="text-lg font-semibold text-gray-700 dark:text-gray-200"
-                  >
 
-
-                    <?= FCurrency::toBRL($this->amountCreditTransactions) ?>
-                  </p>
-                </div>
-              </div>
             </div>
 
             <!-- New Table -->
@@ -335,7 +337,7 @@
                     >
                       <th class="px-4 py-3">Descrição</th>
                       <th class="px-4 py-3">Valor</th>
-                      <th class="px-4 py-3">Status</th>
+                      <th class="px-4 py-3">Tipo</th>
                       <th class="px-4 py-3">Data</th>
                     </tr>
                   </thead>

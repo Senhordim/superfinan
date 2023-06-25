@@ -161,7 +161,7 @@
                 >
                   <img
                     class="object-cover w-8 h-8 rounded-full"
-                    src="https://images.unsplash.com/photo-1502378735452-bc7d86632805?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=aa3a807e1bbdfd4364d1f449eaa96d82"
+                    src="https://avatars.githubusercontent.com/u/212854?s=400&u=5a6a599476df16f3e6a28a936411ea2c9e3fe11a&v=4"
                     alt=""
                     aria-hidden="true"
                   />
