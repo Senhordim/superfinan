@@ -6,6 +6,7 @@ namespace SFinan\Controllers;
 use SFinan\Views\View;
 use SFinan\Models\TransactionModel;
 use SFinan\DB\Connection;
+use SFinan\Models\CategoryModel;
 
 class TransactionsController
 {
@@ -13,14 +14,19 @@ class TransactionsController
     public function new()
     {
         $view = new View('/transactions/new.php');
+
+        $category = new CategoryModel(Connection::getInstance());
+        $categories = $category->findAll();
+        $view->categories =  $categories;
+
         return $view->render();
     }
 
     public function create()
     {
         $data = $_POST;
-        $expense = new TransactionModel(Connection::getInstance());
-        $expense->insert($data);
+        $transaction = new TransactionModel(Connection::getInstance());
+        $transaction->insert($data);
         return header('Location: ' . $_ENV['BASE_URL']);
     }
 

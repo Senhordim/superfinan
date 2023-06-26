@@ -254,7 +254,7 @@
             <h2
               class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
             >
-              Nova despesa
+              Novo lançamento
             </h2>
 
             <?php require VIEWS_PATH . '/transactions/_form.php'; ?>
