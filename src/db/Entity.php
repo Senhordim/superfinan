@@ -21,10 +21,10 @@ abstract class Entity
         return $get->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // public function find(string $fields = '*', int $id)
-    // {
-    //     return current($this->where(['id' => $id], '', $fields));
-    // }
+    public function find(int $id, string $fields = '*', )
+    {
+        return current($this->where(['id' => $id], '', $fields));
+    }
 
     public function where(
         array $conditions,
