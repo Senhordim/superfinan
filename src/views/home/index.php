@@ -339,6 +339,7 @@
                       <th class="px-4 py-3">Valor</th>
                       <th class="px-4 py-3">Tipo</th>
                       <th class="px-4 py-3">Data</th>
+                      <th class="px-4 py-3">Ações</th>
                     </tr>
                   </thead>
                   <tbody
@@ -374,6 +375,7 @@
                       <td class="px-4 py-3 text-sm">
                         <?= FCurrency::toBRL($transaction['amount']) ?>
                       </td>
+
                       <td class="px-4 py-3 text-xs">
                         <span
                           class="px-2 py-1 font-semibold leading-tight <?=  $transaction['type'] == 1 ? 'bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100' : 'bg-red-100 text-red-700 rounded-full dark:bg-red-700 dark:text-red-100' ?>"
@@ -382,9 +384,24 @@
                         </span>
                       </td>
                       <td class="px-4 py-3 text-sm">
-                      <?= FDate::toBR($transaction['created_at']); ?>
-
+                        <?= FDate::toBR($transaction['created_at']); ?>
                       </td>
+                      <td class="px-4 py-3 text-xs">
+                      <a
+                          class="mr-2 px-4 py-2 text-xs font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-700 hover:bg-purple-700 focus:outline-none focus:shadow-outline-green"
+                          href="<?= $_ENV['BASE_URL'] ?>transactions/edit/<?= $transaction['id'] ?>"
+                        >
+                          Editar
+                        </a>
+
+                        <a
+                          class="px-4 py-2 text-xs font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-lg active:bg-red-700 hover:bg-red-700 focus:outline-none focus:shadow-outline-green"
+                          href="<?= $_ENV['BASE_URL'] ?>transactions/delete"
+                        >
+                          Excluir
+                        </a>
+                      </td>
+
                     </tr>
                   <?php endforeach; ?>
                   </tbody>

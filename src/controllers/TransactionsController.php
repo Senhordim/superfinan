@@ -10,23 +10,28 @@ use SFinan\Models\CategoryModel;
 class TransactionsController
 {
 
-    private $category = new CategoryModel(Connection::getInstance());
+
     public function new()
     {
         $view = new View('/transactions/new.php');
-
-        $categories = $this->category->findAll();
+        $category = new CategoryModel(Connection::getInstance());
+        $categories = $category->findAll();
         $view->categories =  $categories;
 
         return $view->render();
     }
 
-    public function edit()
+    public function edit(int $id)
     {
         $view = new View('/transactions/edit.php');
-
-        $categories = $this->category->findAll();
+        $category = new CategoryModel(Connection::getInstance());
+        $categories = $category->findAll();
         $view->categories =  $categories;
+
+        $transaction = new TransactionModel(Connection::getInstance());
+        $transaction = $transaction->find($id);
+
+        $view->transaction =  $transaction;
 
         return $view->render();
     }
