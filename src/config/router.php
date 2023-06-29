@@ -10,5 +10,7 @@ SimpleRouter::get('/transactions/new', 'TransactionsController@new')->name('new_
 SimpleRouter::get('/transactions/edit/{id}', 'TransactionsController@edit')->name('edit_transactions');
 
 SimpleRouter::post('/transactions/create', 'TransactionsController@create')->name('create_transactions');
+SimpleRouter::post('/transactions/update', 'TransactionsController@update')->name('update_transactions');
+SimpleRouter::delete('/transactions/delete', 'TransactionsController@delete')->name('delete_transactions');
 
 SimpleRouter::start();

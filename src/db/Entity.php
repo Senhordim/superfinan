@@ -90,7 +90,7 @@ abstract class Entity
 
         };
 
-        $sql .= $set . 'update_at = NOW() WHERE id = :id';
+        $sql .= $set . ', updated_at = ' . time() . ' WHERE id = :id';
 
         $update = $this->bind($sql, $data);
 

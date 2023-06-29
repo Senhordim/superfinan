@@ -28,12 +28,19 @@ class TransactionsController
         $categories = $category->findAll();
         $view->categories =  $categories;
 
-        $transaction = new TransactionModel(Connection::getInstance());
-        $transaction = $transaction->find($id);
+        $transaction = $this->findById($id);
 
         $view->transaction =  $transaction;
 
         return $view->render();
+    }
+
+    public function update(){
+        $data = $_POST;
+
+        $transaction = new TransactionModel(Connection::getInstance());
+        $transaction->update($data);
+        return header('Location: ' . $_ENV['BASE_URL']);
     }
 
     public function create()
@@ -42,6 +49,20 @@ class TransactionsController
         $transaction = new TransactionModel(Connection::getInstance());
         $transaction->insert($data);
         return header('Location: ' . $_ENV['BASE_URL']);
+    }
+
+    public function delete(int $id)
+    {
+        $transaction = new TransactionModel(Connection::getInstance());
+        $transaction->delete($id);
+        return header('Location: ' . $_ENV['BASE_URL']);
+    }
+
+    private function findById(int $id) : array
+    {
+        $transaction = new TransactionModel(Connection::getInstance());
+        $transaction = $transaction->find($id);
+        return $transaction;
     }
 
 }
