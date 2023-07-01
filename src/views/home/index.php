@@ -395,13 +395,12 @@
                         </a>
 
                         <a
-                          class="px-4 py-2 text-xs font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-lg active:bg-red-700 hover:bg-red-700 focus:outline-none focus:shadow-outline-green"
-                          href="<?= $_ENV['BASE_URL'] ?>transactions/delete"
+                          href="<?php echo  $_ENV['BASE_URL'] . 'transactions/delete/' . $transaction['id'] ?>"
+                          class="px-4 py-2 text-xs font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-lg active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-purple"
                         >
                           Excluir
                         </a>
                       </td>
-
                     </tr>
                   <?php endforeach; ?>
                   </tbody>
