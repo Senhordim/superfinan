@@ -2,7 +2,7 @@
 
 namespace SFinan\Controllers;
 
-use SFinan\Auth\Autenticador;
+use SFinan\Services\Auth\Authenticator;
 use SFinan\DB\Connection;
 use SFinan\Models\UserModel;
 use SFinan\Views\View;
@@ -18,10 +18,17 @@ class AuthController
     public function create()
     {
         $user = new UserModel(Connection::getInstance());
-        $authenticator = new Autenticador($user);
+        $authenticator = new Authenticator($user);
         if($authenticator->login($_POST)){
             header('Location: /');
             exit();
         }
+    }
+
+    public function logout() : void
+    {
+        (new Authenticator())->logout();
+        header('Location: /auth/login');
+        exit();
     }
 }

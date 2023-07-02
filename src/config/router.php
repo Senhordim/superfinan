@@ -6,6 +6,7 @@ SimpleRouter::setDefaultNamespace('SFinan\Controllers');
 
 SimpleRouter::get('/auth/login', 'AuthController@login');
 SimpleRouter::post('/auth/create', 'AuthController@create');
+SimpleRouter::get('/auth/logout', 'AuthController@logout');
 
 SimpleRouter::get('/', 'HomeController@index');
 

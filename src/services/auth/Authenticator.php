@@ -1,18 +1,19 @@
 <?php
 
-namespace SFinan\Auth;
+namespace SFinan\Services\Auth;
 
 use SFinan\Models\UserModel;
-use SFinan\Session\Session;
+use SFinan\Services\Session\Session;
 
-class Autenticador
+class Authenticator
 {
 
     private UserModel $user;
 
-    public function __construct(UserModel $user)
+    public function __construct(UserModel $user = null)
     {
-        $this->user = $user;
+        if($user)
+            $this->user = $user;
 
     }
 
@@ -41,19 +42,6 @@ class Autenticador
     {
         if(Session::has('user'))
             Session::remove('user');
-    }
-
-    public static function check() : void
-    {
-        if (!self::isLogged()) {
-            header('Location: /login');
-            exit();
-        }
-    }
-
-    public static function isLogged()
-    {
-        return isset($_SESSION['auth']);
     }
 
 }

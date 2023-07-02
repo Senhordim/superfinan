@@ -106,14 +106,10 @@
 <script>
 
   document.getElementById('transaction').addEventListener('submit', function(event) {
-
     event.preventDefault();
-
     var amount = document.getElementById('amount');
     var amountUnmask = amount.value.replace(/[^0-9,]*/g, '').replace(',', '.');
-
     amount.value = parseFloat(amountUnmask);
-
     this.submit();
   });
 

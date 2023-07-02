@@ -1,6 +1,6 @@
 <?php
 
-namespace SFinan\Session;
+namespace SFinan\Services\Session;
 
 class Session
 {
