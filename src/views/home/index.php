@@ -1,9 +1,9 @@
 <?php
   use SFinan\Utils\FCurrency;
   use SFinan\Utils\FDate;
-  require VIEWS_PATH . '/includes/_head.php';
-
 ?>
+
+<?php require VIEWS_PATH . '/includes/_head.php'; ?>
 
 <div
       class="flex h-screen bg-gray-50 dark:bg-gray-900"

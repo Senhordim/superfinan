@@ -4,7 +4,10 @@ use Pecee\SimpleRouter\SimpleRouter;
 
 SimpleRouter::setDefaultNamespace('SFinan\Controllers');
 
-SimpleRouter::get('/', 'HomeController@index')->name('home');
+SimpleRouter::get('/auth/login', 'AuthController@login');
+SimpleRouter::post('/auth/create', 'AuthController@create');
+
+SimpleRouter::get('/', 'HomeController@index');
 
 SimpleRouter::get('/transactions/new', 'TransactionsController@new');
 SimpleRouter::get('/transactions/edit/{id}', 'TransactionsController@edit');
