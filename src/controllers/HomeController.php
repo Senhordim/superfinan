@@ -14,6 +14,7 @@ class HomeController
 
     public function __construct()
     {
+
         $this->check();
     }
     public function index()
