@@ -4,17 +4,16 @@ namespace SFinan\Controllers;
 
 use SFinan\DB\Connection;
 use SFinan\Models\TransactionModel;
+
 use SFinan\Services\Auth\CheckUserLogged;
 use SFinan\Views\View;
 
-class HomeController
+class HomeController extends BaseController
 {
-
     use CheckUserLogged;
 
     public function __construct()
     {
-
         $this->check();
     }
     public function index()

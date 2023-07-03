@@ -3,7 +3,7 @@
         'name' => 'senhordim/superfinan',
         'pretty_version' => 'dev-develop',
         'version' => 'dev-develop',
-        'reference' => '824c0d5449e89fd08d95dcae179229d57893014a',
+        'reference' => '98856f1f124021d5329c0b58d6b36ee860e813d7',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -40,7 +40,7 @@
         'senhordim/superfinan' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
-            'reference' => '824c0d5449e89fd08d95dcae179229d57893014a',
+            'reference' => '98856f1f124021d5329c0b58d6b36ee860e813d7',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

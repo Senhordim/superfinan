@@ -19,9 +19,12 @@ class AuthController
     {
         $user = new UserModel(Connection::getInstance());
         $authenticator = new Authenticator($user);
+
         if($authenticator->login($_POST)){
             header('Location: /');
             exit();
+        } else {
+            header('Location: /auth/login');
         }
     }
 
