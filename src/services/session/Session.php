@@ -25,6 +25,12 @@ class Session
             unset($_SESSION[$key]);
     }
 
+    public static function clear()
+    {
+        self::sessionStart();
+        session_destroy();
+    }
+
     public static function has($key) : bool
     {
         self::sessionStart();

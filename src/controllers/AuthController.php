@@ -5,6 +5,8 @@ namespace SFinan\Controllers;
 use SFinan\Services\Auth\Authenticator;
 use SFinan\DB\Connection;
 use SFinan\Models\UserModel;
+use SFinan\Services\Session\FlashMessage;
+use SFinan\Services\Session\Session;
 use SFinan\Views\View;
 
 class AuthController
@@ -22,8 +24,9 @@ class AuthController
 
         if($authenticator->login($_POST)){
             header('Location: /');
-            exit();
+            FlashMessage::add('success', 'Login efetuado com sucesso');
         } else {
+            FlashMessage::add('error', 'Usuário ou senha inválidos');
             header('Location: /auth/login');
         }
     }

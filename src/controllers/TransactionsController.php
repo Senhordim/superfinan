@@ -2,6 +2,7 @@
 
 namespace SFinan\Controllers;
 
+use SFinan\Services\Session\FlashMessage;
 use SFinan\Views\View;
 use SFinan\Models\TransactionModel;
 use SFinan\DB\Connection;
@@ -48,6 +49,7 @@ class TransactionsController
         $data = $_POST;
         $transaction = new TransactionModel(Connection::getInstance());
         $transaction->insert($data);
+        FlashMessage::add('success', 'Transação efetuada com sucesso!');
         return header('Location: ' . $_ENV['BASE_URL']);
     }
 
