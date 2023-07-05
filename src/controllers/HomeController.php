@@ -6,9 +6,10 @@ use SFinan\DB\Connection;
 use SFinan\Models\TransactionModel;
 
 use SFinan\Services\Auth\CheckUserLogged;
+use SFinan\Services\Session\Session;
 use SFinan\Views\View;
 
-class HomeController extends BaseController
+class HomeController
 {
     use CheckUserLogged;
 
@@ -21,8 +22,9 @@ class HomeController extends BaseController
         $view = new View('/home/index.php');
 
         $transaction = new TransactionModel(Connection::getInstance());
-
-        $allTransactions = $transaction->findAll(order: 'DESC');
+        $currentUserId = Session::get('user')['id'];
+        // $allTransactions = $transaction->findAll(order: 'DESC');
+        $allTransactions = $transaction->where(['user_id' => $currentUserId], order: 'DESC');
         $view->allTransactions =  $allTransactions ;
 
         $allTransactionsDebit = $transaction->where(['type' => 0]);

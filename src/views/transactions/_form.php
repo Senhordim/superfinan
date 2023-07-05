@@ -5,6 +5,7 @@
 <div
   class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
   >
+  <?php require VIEWS_PATH . '/includes/_flash_messages.php'; ?>
   <form
     method="post"
     action="<?php echo  $existsTransaction ? $_ENV['BASE_URL'] . 'transactions/update' : $_ENV['BASE_URL'] . 'transactions/create' ?>"
@@ -89,8 +90,7 @@
 
         ><?= $existsTransaction ? $this->transaction['description']  : ''?></textarea>
     </label>
-    <input type="hidden"  name="user_id" value="1" />
-    <input type="hidden"  name="category_id" value="1" />
+
     <?php if( $existsTransaction ): ?>
       <input type="hidden"  name="id" value="<?= $this->transaction['id'] ?>" />
     <?php endif; ?>

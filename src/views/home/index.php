@@ -1,5 +1,7 @@
 <?php
-  use SFinan\Utils\FCurrency;
+
+use SFinan\Services\Session\Session;
+use SFinan\Utils\FCurrency;
   use SFinan\Utils\FDate;
 ?>
 
@@ -147,7 +149,7 @@
                             ></div>
                           </div>
                           <div>
-                            <p class="font-semibold">Diego Collares</p>
+                            <p class="font-semibold"><?= Session::get('user')['first_name'] ?></p>
                             <p class="text-xs text-gray-600 dark:text-gray-400">
                               <?= $transaction['description'] ?>
                             </p>

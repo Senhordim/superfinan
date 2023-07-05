@@ -29,7 +29,8 @@ abstract class Entity
     public function where(
         array $conditions,
         string $operator = ' AND ',
-        string $fields = '*'
+        string $fields = '*',
+        string $order = 'ASC'
     ) : array
     {
         $sql = 'SELECT ' . $fields . ' FROM ' . $this->table . ' WHERE ';
@@ -46,7 +47,7 @@ abstract class Entity
             }
         }
 
-        $sql .= $where;
+        $sql .= $where . ' ORDER BY created_at ' . $order;
 
         $get = $this->bind($sql, $conditions);
 
