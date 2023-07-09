@@ -6,7 +6,6 @@ use SFinan\Services\Auth\Authenticator;
 use SFinan\DB\Connection;
 use SFinan\Models\UserModel;
 use SFinan\Services\Session\FlashMessage;
-use SFinan\Services\Session\Session;
 use SFinan\Views\View;
 
 class AuthController

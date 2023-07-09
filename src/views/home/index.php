@@ -149,7 +149,10 @@ use SFinan\Utils\FCurrency;
                             ></div>
                           </div>
                           <div>
-                            <p class="font-semibold"><?= Session::get('user')['first_name'] ?></p>
+                            <p class="font-semibold">
+                              <?= Session::get('user')['first_name'] ?>
+                              <?= Session::get('user')['last_name'] ?>
+                            </p>
                             <p class="text-xs text-gray-600 dark:text-gray-400">
                               <?= $transaction['description'] ?>
                             </p>
@@ -171,7 +174,13 @@ use SFinan\Utils\FCurrency;
                         <?= FDate::toBR($transaction['created_at']); ?>
                       </td>
                       <td class="px-4 py-3 text-xs">
-                      <a
+                        <a
+                          class="mr-2 px-4 py-2 text-xs font-medium leading-5 text-white transition-colors duration-150 bg-black border border-transparent rounded-lg active:bg-white hover:bg-white focus:outline-none focus:shadow-outline-green"
+                          href="<?= $_ENV['BASE_URL'] ?>transactions/show/<?= $transaction['id'] ?>"
+                        >
+                         Visualizar
+                        </a>
+                        <a
                           class="mr-2 px-4 py-2 text-xs font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-700 hover:bg-purple-700 focus:outline-none focus:shadow-outline-green"
                           href="<?= $_ENV['BASE_URL'] ?>transactions/edit/<?= $transaction['id'] ?>"
                         >

@@ -12,40 +12,40 @@
     id="transaction"
     >
     <div class="mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400">
-                  Tipo de lançamento
-                </span>
-                <div class="mt-2">
-                  <label
-                    class="inline-flex items-center text-gray-600 dark:text-gray-400"
-                  >
-                    <input
-                      type="radio"
-                      class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                      name="type"
-                      value="1"
-                      <?php if( $existsTransaction &&  $this->transaction['type'] == 1): ?>
-                        checked
-                      <?php endif; ?>
-                    />
-                    <span class="ml-2">Receita</span>
-                  </label>
-                  <label
-                    class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400 "
-                  >
-                    <input
-                      type="radio"
-                      class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                      name="type"
-                      value="0"
-                      <?php if( $existsTransaction &&  $this->transaction['type'] == 0): ?>
-                        checked
-                      <?php endif; ?>
-                    />
-                    <span class="ml-2">Despesa</span>
-                  </label>
-                </div>
-              </div>
+        <span class="text-gray-700 dark:text-gray-400">
+          Tipo de lançamento
+        </span>
+        <div class="mt-2">
+          <label
+            class="inline-flex items-center text-gray-600 dark:text-gray-400"
+          >
+            <input
+              type="radio"
+              class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+              name="type"
+              value="1"
+              <?php if( $existsTransaction &&  $this->transaction['type'] == 1): ?>
+                checked
+              <?php endif; ?>
+            />
+            <span class="ml-2">Receita</span>
+          </label>
+          <label
+            class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400 "
+          >
+            <input
+              type="radio"
+              class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+              name="type"
+              value="0"
+              <?php if( $existsTransaction &&  $this->transaction['type'] == 0): ?>
+                checked
+              <?php endif; ?>
+            />
+            <span class="ml-2">Despesa</span>
+          </label>
+        </div>
+      </div>
               <label class="block text-sm mt-4">
                 <span class="text-gray-700 dark:text-gray-400">Valor</span>
                 <input

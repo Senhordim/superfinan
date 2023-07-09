@@ -16,5 +16,6 @@ SimpleRouter::get('/transactions/edit/{id}', 'TransactionsController@edit');
 SimpleRouter::post('/transactions/create', 'TransactionsController@create');
 SimpleRouter::post('/transactions/update', 'TransactionsController@update');
 SimpleRouter::get('/transactions/delete/{id}', 'TransactionsController@delete');
+SimpleRouter::get('/transactions/show/{id}', 'TransactionsController@show');
 
 SimpleRouter::start();

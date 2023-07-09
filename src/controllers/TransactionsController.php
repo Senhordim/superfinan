@@ -41,6 +41,14 @@ class TransactionsController
         }
     }
 
+    public function show(int $id)
+    {
+        $view = new View('/transactions/show.php');
+        $transaction = $this->findById($id);
+        $view->transaction =  $transaction;
+        return $view->render();
+    }
+
     public function edit(int $id)
     {
         $view = new View('/transactions/edit.php');
